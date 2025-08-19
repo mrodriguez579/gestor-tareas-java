@@ -5,7 +5,6 @@ public class Main {
         GestorTareas gestor = new GestorTareas();
         Scanner sc = new Scanner(System.in);
 
-        // Cargar tareas guardadas al inicio
         gestor.cargarDeArchivo("tareas.txt");
 
         int opcion;
@@ -19,7 +18,7 @@ public class Main {
             System.out.print("Elige una opción: ");
 
             while (!sc.hasNextInt()) {
-                System.out.print("❌ Ingresa un número válido: ");
+                System.out.print("Ingresa un número válido: ");
                 sc.next();
             }
             opcion = sc.nextInt();
@@ -45,10 +44,10 @@ public class Main {
                     break;
                 case 5:
                     gestor.guardarEnArchivo("tareas.txt");
-                    System.out.println("👋 Saliendo del programa...");
+                    System.out.println("Saliendo del programa...");
                     break;
                 default:
-                    System.out.println("❌ Opción inválida.");
+                    System.out.println("Opción inválida.");
             }
         } while (opcion != 5);
 

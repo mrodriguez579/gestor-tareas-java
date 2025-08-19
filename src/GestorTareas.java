@@ -11,16 +11,16 @@ public class GestorTareas {
 
     public void agregarTarea(String descripcion) {
         if (descripcion == null || descripcion.trim().isEmpty()) {
-            System.out.println("❌ La descripción no puede estar vacía.");
+            System.out.println("La descripción no puede estar vacía.");
             return;
         }
         tareas.add(new Tarea(descripcion));
-        System.out.println("✅ Tarea agregada.");
+        System.out.println("Tarea agregada.");
     }
 
     public void listarTareas() {
         if (tareas.isEmpty()) {
-            System.out.println("📭 No hay tareas.");
+            System.out.println("No hay tareas.");
             return;
         }
         for (int i = 0; i < tareas.size(); i++) {
@@ -30,11 +30,11 @@ public class GestorTareas {
 
     public void completarTarea(int indice) {
         if (indice < 0 || indice >= tareas.size()) {
-            System.out.println("❌ Índice inválido.");
+            System.out.println("Índice inválido.");
             return;
         }
         tareas.get(indice).marcarCompletada();
-        System.out.println("✅ Tarea marcada como completada.");
+        System.out.println("Tarea marcada como completada.");
     }
 
     public void eliminarCompletadas() {
@@ -44,23 +44,21 @@ public class GestorTareas {
                 it.remove();
             }
         }
-        System.out.println("🗑️ Tareas completadas eliminadas.");
+        System.out.println("Tareas completadas eliminadas.");
     }
 
-    // Extra: guardar tareas en archivo
     public void guardarEnArchivo(String nombreArchivo) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
             for (Tarea tarea : tareas) {
                 writer.write(tarea.getDescripcion() + ";" + tarea.isCompletada());
                 writer.newLine();
             }
-            System.out.println("💾 Tareas guardadas en " + nombreArchivo);
+            System.out.println("Tareas guardadas en " + nombreArchivo);
         } catch (IOException e) {
-            System.out.println("❌ Error al guardar el archivo.");
+            System.out.println("Error al guardar el archivo.");
         }
     }
 
-    // Extra: cargar tareas desde archivo
     public void cargarDeArchivo(String nombreArchivo) {
         try (BufferedReader reader = new BufferedReader(new FileReader(nombreArchivo))) {
             String linea;
@@ -74,9 +72,9 @@ public class GestorTareas {
                     tareas.add(tarea);
                 }
             }
-            System.out.println("📂 Tareas cargadas desde " + nombreArchivo);
+            System.out.println("Tareas cargadas desde " + nombreArchivo);
         } catch (IOException e) {
-            System.out.println("⚠️ No se encontraron tareas guardadas.");
+            System.out.println("No se encontraron tareas guardadas.");
         }
     }
 }
