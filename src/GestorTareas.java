@@ -10,6 +10,10 @@ public class GestorTareas {
     }
 
     public void agregarTarea(String descripcion) {
+        if (descripcion == null || descripcion.trim().isEmpty()) {
+            System.out.println("❌ La descripción no puede estar vacía.");
+            return;
+        }
         tareas.add(new Tarea(descripcion));
         System.out.println("✅ Tarea agregada.");
     }
